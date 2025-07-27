@@ -118,8 +118,17 @@ class NotesOrganizer:
             print("No valid results to upload")
             return {}
         
-        # Upload to Google Drive
-        uploaded_files = self.drive_manager.organize_notes_by_subject(valid_results, base_folder_id)
+        # Create or get the "OrganizedNotes" base folder
+        organized_notes_folder_id = self.drive_manager.get_or_create_folder("OrganizedNotes", base_folder_id)
+        
+        if organized_notes_folder_id is None:
+            print("Failed to create OrganizedNotes folder")
+            return {}
+        
+        print(f"Using OrganizedNotes folder (ID: {organized_notes_folder_id})")
+        
+        # Upload to Google Drive within the OrganizedNotes folder
+        uploaded_files = self.drive_manager.organize_notes_by_subject(valid_results, organized_notes_folder_id)
         
         # Print summary
         print("\nUpload Summary:")

@@ -104,7 +104,38 @@ python notes_organizer.py ./notes_folder --output "1ABC123DEF456"
 1. **OCR Processing**: Extracts text from handwritten notes using Tesseract
 2. **AI Classification**: Uses transformer models to categorize content into subjects
 3. **Google Drive Organization**: Creates subject folders and uploads files automatically
-4. **Auto-folder Creation**: If a subject folder doesn't exist, it creates one
+4. **Auto-folder Creation**: Creates an "OrganizedNotes" base folder with subject subfolders
+
+## Folder Structure
+
+The system automatically creates this structure in your Google Drive:
+
+```
+Google Drive Root (or your specified folder)
+└── OrganizedNotes/
+    ├── mathematics/
+    │   ├── math_notes.jpg
+    │   ├── calculus_equations.png
+    │   └── algebra_notes.jpg
+    ├── physics/
+    │   ├── mechanics_notes.jpg
+    │   ├── thermodynamics.png
+    │   └── quantum_physics.jpg
+    ├── chemistry/
+    │   ├── reactions.jpg
+    │   ├── molecular_structures.png
+    │   └── lab_notes.jpg
+    ├── biology/
+    │   ├── cell_biology.jpg
+    │   ├── genetics_notes.png
+    │   └── anatomy_diagrams.jpg
+    └── computer_science/
+        ├── algorithms.jpg
+        ├── code_notes.png
+        └── programming_concepts.jpg
+```
+
+**Note**: The "OrganizedNotes" folder is automatically created the first time you run the application. All your notes will be organized within this folder by subject.
 
 ## Troubleshooting
 
