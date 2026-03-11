@@ -1,9 +1,22 @@
-# Google Drive credentials
+# Credentials — do not commit
+DRIVEAPI.json
+Vision_API.json
+token_drive.json
 credentials.json
 token.json
+*.json.bak
 
 # Environment variables
 .env
+
+# Virtual environment
+myenv/
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
 
 # Python
 __pycache__/
@@ -11,63 +24,34 @@ __pycache__/
 *$py.class
 *.so
 .Python
+*.egg-info/
+.eggs/
+dist/
 build/
 develop-eggs/
-dist/
 downloads/
-eggs/
-.eggs/
 lib/
 lib64/
 parts/
 sdist/
 var/
 wheels/
-*.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
 
-# Virtual environments
-venv/
-env/
-ENV/
-env.bak/
-venv.bak/
-
-# IDE
-.vscode/
+# IDE / OS
+.DS_Store
 .idea/
+.vscode/
 *.swp
 *.swo
 *~
 
-# OS
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+# Generated / local output
+extracted_text.txt
+all_pages.pdf
+captured_image_*.jpg
 
-# Logs
-*.log
-logs/
-
-# Temporary files
-*.tmp
-*.temp
-temp/
-tmp/
-
-# Streamlit
-.streamlit/
-
-# Model cache
-.cache/
-transformers_cache/
-
-# Test images
-test_images/
-sample_images/ 
+# Optional: uncomment if you don't want to track sample assets
+# test_note.jpg
