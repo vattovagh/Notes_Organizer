@@ -6,7 +6,10 @@ from merge import merge_notes
 
 def main():
     pic_count = capture_images()
-    merge_notes()
+    if pic_count:
+        merge_notes(delete_originals=True)
+    else:
+        print("No pictures captured; skipping PDF.")
 
     
 def capture_images():
@@ -15,7 +18,7 @@ def capture_images():
 
     if not cap.isOpened():
         print("Error: Could not open video stream from iPhone.")
-        return
+        return 0
     
     while True:
         ret, frame = cap.read()

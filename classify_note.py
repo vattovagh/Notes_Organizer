@@ -55,6 +55,14 @@ SUBJECT_KEYWORDS = {
 }
 
 
+# Whole-word patterns (optional plural), so "sum" doesn't match "summary".
+# Keywords are lowercased because the text is lowercased before matching.
+_KEYWORD_PATTERNS = {
+    category: [re.compile(r"\b" + re.escape(kw.lower()) + r"(?:s|es)?\b") for kw in keywords]
+    for category, keywords in SUBJECT_KEYWORDS.items()
+}
+
+
 def _normalize(text: str) -> str:
     """Lowercase and collapse whitespace for matching."""
     if not text or not text.strip():
@@ -74,8 +82,8 @@ def classify_text(text: str) -> str:
     best_category = "Other"
     best_score = 0
 
-    for category, keywords in SUBJECT_KEYWORDS.items():
-        score = sum(1 for kw in keywords if kw in normalized)
+    for category, patterns in _KEYWORD_PATTERNS.items():
+        score = sum(1 for pattern in patterns if pattern.search(normalized))
         if score > best_score:
             best_score = score
             best_category = category

@@ -50,8 +50,9 @@ def get_or_create_folder(service, folder_name, parent_id=None):
     """
     if parent_id is None:
         parent_id = "root"
+    escaped_name = folder_name.replace("\\", "\\\\").replace("'", "\\'")
     query = (
-        f"name = {repr(folder_name)} and "
+        f"name = '{escaped_name}' and "
         f"'{parent_id}' in parents and "
         "mimeType = 'application/vnd.google-apps.folder' and trashed = false"
     )
