@@ -1,0 +1,14 @@
+[
+  {
+    "question": "EXAMPLE: What is the definition of a derivative in my calculus notes?",
+    "sources": ["calculus_week3"],
+    "answerable": true,
+    "reference": "EXAMPLE: the limit of the difference quotient as h approaches 0"
+  },
+  {
+    "question": "EXAMPLE: What did I write about the French Revolution?",
+    "sources": [],
+    "answerable": false,
+    "reference": ""
+  }
+]

@@ -55,3 +55,7 @@ captured_image_*.jpg
 
 # Optional: uncomment if you don't want to track sample assets
 # test_note.jpg
+
+# RAG vector store
+.chroma/
+test_note.jpg

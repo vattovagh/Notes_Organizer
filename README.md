@@ -48,6 +48,21 @@ Capture handwritten or printed notes, extract text (OCR), classify by subject, m
 | `python server.py` | Start Flask server; `POST /upload` with an image returns Tesseract OCR text as JSON |
 | `python classify_note.py extracted_text.txt` | Classify an existing text file |
 
+## Ask questions about your notes (RAG)
+
+Notes are OCR'd (Google Vision), chunked, embedded locally (`all-MiniLM-L6-v2`), stored in Chroma (`.chroma/`), and answered with Claude using only the retrieved excerpts, with citations.
+
+```bash
+export ANTHROPIC_API_KEY=...
+python notes_rag.py ingest Test_Notes            # images or .txt files
+python notes_rag.py ask "What is a derivative?" [--subject Mathematics] [--k 4]
+python -m eval.run_eval [--k 4] [--no-judge]     # hit@k, MRR, answer correctness, refusals
+```
+
+Add your own questions to `eval/questions.json` (replace the EXAMPLE entries). Unit tests: `python -m unittest discover tests`.
+
+The earlier Tesseract + BART + Drive-manager pipeline is kept in `archive/`.
+
 ## Project structure
 
 - `classify_note.py` — Subject classification (keyword-based).
@@ -56,6 +71,8 @@ Capture handwritten or printed notes, extract text (OCR), classify by subject, m
 - `merge.py` — Build one PDF from all `.jpg` in current directory.
 - `webcam.py` — Camera capture and call to `merge.py`.
 - `server.py` — Flask app for Tesseract OCR on uploaded images.
+- `notes_rag.py`, `rag/`, `eval/`, `tests/` — RAG ingest, question answering, and evaluation.
+- `archive/` — superseded pipeline.
 
 ## License
 

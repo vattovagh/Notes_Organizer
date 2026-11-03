@@ -9,11 +9,16 @@ google-api-python-client
 google-auth-httplib2
 google-auth-oauthlib
 
-# Local OCR (Flask server)
-pytesseract
-Pillow
-Flask
+# RAG: local embeddings, vector store, LLM answers
+sentence-transformers
+chromadb
+anthropic
 
 # Capture & PDF
 opencv-python
 reportlab
+Pillow
+
+# Optional: Tesseract server (server.py)
+pytesseract
+Flask
